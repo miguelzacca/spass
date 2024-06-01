@@ -2,40 +2,41 @@
 #include <string>
 #include <cctype>
 #include <stdexcept>
+#include <random>
 
 static const std::string LETTERS = "qwertyuiopasdfghjklzxcvbnm";
+static const std::string NUMBERS = "0123456789";
 
 std::string process(const unsigned int &size, bool letters, bool numbers)
 {
-  srand(time(NULL));
+  std::random_device rd;
+  std::mt19937 gen(rd());
+
+  std::uniform_int_distribution<> letter_dist(0, LETTERS.size() - 1);
+  std::uniform_int_distribution<> number_dist(0, NUMBERS.size() - 1);
+  std::uniform_int_distribution<> letter_or_number_dist(0, 1);
+  std::uniform_int_distribution<> case_dist(0, 1);
 
   std::string output;
 
   for (std::size_t i = 0; i < size; ++i)
   {
-    bool letterOrNumber = letters ? true : false;
+    bool use_letter = letters && (!numbers || !letter_or_number_dist(gen));
 
-    if (letters && numbers)
+    if (use_letter)
     {
-      letterOrNumber = rand() % 2 == 0 ? true : false;
-    }
-
-    if (letters && letterOrNumber)
-    {
-      bool upperOrLower = rand() % 2 ? true : false;
-
-      char letter = LETTERS[rand() % LETTERS.size()];
-      if (upperOrLower)
+      char letter = LETTERS[letter_dist(gen)];
+      if (case_dist(gen))
       {
         letter = std::toupper(letter);
       }
-
       output += letter;
+      continue;
     }
 
-    if (numbers && !letterOrNumber)
+    if (numbers)
     {
-      output += std::to_string(rand())[0];
+      output += NUMBERS[number_dist(gen)];
     }
   }
 
