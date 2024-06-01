@@ -6,7 +6,7 @@ Password generator with command line.
 
 ```bash
 git clone https://github.com/miguelzacca/spass.git
-chmod +x ~/spass/main ~/spass/config.sh
+chmod +x ~/spass/main-deb ~/spass/config.sh
 ~/spass/config.sh
 ```
 
