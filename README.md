@@ -1,13 +1,20 @@
 # spass
 
-Password generator with command line. Linux only
+Password generator with command line.
 
-## Install
+## Install - Linux
 
 ```bash
 git clone https://github.com/miguelzacca/spass.git
 chmod +x ~/spass/main ~/spass/config.sh
 ~/spass/config.sh
+```
+
+## Install - Windows
+
+```cmd
+git clone https://github.com/miguelzacca/spass.git
+%HOMEPATH%/spass/config.bat
 ```
 
 ## Use
