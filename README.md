@@ -1,6 +1,6 @@
 # spass
 
-Simple password generator with command line. Linux only
+Password generator with command line. Linux only
 
 ## Install
 
