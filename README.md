@@ -14,7 +14,9 @@ chmod +x ~/spass/main-deb ~/spass/config.sh
 
 ```cmd
 git clone https://github.com/miguelzacca/spass.git
-%HOMEPATH%/spass/config.bat
+cd %HOMEPATH%/spass
+config.bat
+cd %HOMEPATH%
 ```
 
 ## Use
